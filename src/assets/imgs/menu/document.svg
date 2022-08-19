@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xmlns="http://www.w3.org/2000/svg">
+  <polygon style="fill: rgb(255, 255, 255);" points="40,45 8,45 8,3 30,3 40,13 "/>
+  <polygon style="fill: rgba(162, 162, 162, 0.39);" points="38.5,14 29,14 29,4.5 "/>
+  <rect x="16" y="21" style="fill: rgb(162, 162, 162);" width="17" height="2"/>
+  <rect x="16" y="25" style="fill: rgb(162, 162, 162);" width="13" height="2"/>
+  <rect x="16" y="29" style="fill: rgb(162, 162, 162);" width="17" height="2"/>
+  <rect x="16" y="33" style="fill: rgb(162, 162, 162);" width="13" height="2"/>
+  <path style="fill: rgb(67, 160, 71);" d="M48,38H32l8,10L48,38z"/>
+  <rect x="37" y="29" style="fill: rgb(67, 160, 71);" width="6" height="14"/>
+</svg>

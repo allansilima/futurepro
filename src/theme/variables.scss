@@ -1,0 +1,190 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+@import "ionic.globals";
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+//   Verificar global.scss
+
+.readonly {
+  color: #666666;
+}
+
+.error {
+  color: red;
+}
+
+.error-msg {
+  padding-left: 16px;
+  font-size: 70%;
+}
+
+.legend{
+  font-size: 8px;
+}
+
+.field-error-msg {
+  color: red;
+  padding-left: 16px;
+  font-size: 70%;
+}
+
+.card-video {
+  position: relative;
+  text-align: center;
+}
+
+.logo {
+  padding: 0px;
+  text-align: center;
+  img {
+    //    max-width: 20rem;
+    //    min-width: 20rem;
+    max-width: 32rem;
+    min-width: 32rem;
+  }
+}
+
+.toogle {
+  font-size: 13px;
+  color: #999999;
+}
+
+.select {
+  width: 100% !important;
+  max-width: 100% !important;
+  justify-content: left;
+  text-align: left;
+  padding: 0px 5px 10px 0px !important;
+}
+
+.popover-content {
+  width: 95% !important;
+  max-width: 95% !important;
+  padding-left: 6px;
+}
+
+.radio {
+  padding: 0px !important;
+  margin-right: 7px !important;
+}
+
+.checkbox {
+  padding: 0px !important;
+  margin-right: 7px !important;
+}
+
+.slides {
+  padding: 1px !important;
+}
+
+.bar-button {
+  padding: 0px !important;
+  margin-right: 10px !important;
+}
+
+ion-buttons[start] {
+  order: 0;
+  padding: 0px !important;
+  margin-right: 3px !important;
+}
+
+.div-button-submit {
+  padding-top: 50px !important;
+}
+
+.menu {
+  min-width: 9rem;
+  min-height: 9rem;
+  img {
+    max-width: 7rem;
+    min-width: 7rem;
+  }
+}
+
+.option-list {
+  color: #204a8a;
+  background-image: linear-gradient(to right, #204a8a , #32db64 120%);
+  min-width: 8rem;
+  min-height: 8rem;
+  img {
+    max-width: 4rem;
+    min-width: 4rem;
+  }
+}
+
+.photo-frame {
+  min-width: 15rem;
+  min-height: 15rem;
+}
+
+.alert {
+  white-space: pre-line;
+}
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  //  primar:    #488aff,
+    primary: #204a8a,
+  secondary: #32db64,
+  danger: #f53d3d,
+  light: #f4f4f4,
+  dark: #222
+);
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

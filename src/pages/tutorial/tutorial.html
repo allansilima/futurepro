@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar color="primary" hideBackButton>
+      <ion-buttons start>
+        <button ion-button icon-only (click)="goBack()">
+          <ion-icon name="arrow-round-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Tutorial de treinamento</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content>
+  <ion-card class="card-video">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 offset-3>
+            <img src="../../assets/imgs/movie_beginning.svg" (click)="playVideo()"/>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

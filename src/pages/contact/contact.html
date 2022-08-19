@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar color="primary" hideBackButton>
+      <ion-buttons start>
+        <button ion-button icon-only (click)="goBack()">
+          <ion-icon name="arrow-round-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Contato</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content class="option-list">
+  <ion-list>
+    <ion-item color="primary" class="option-list" *ngFor="let c of contacts" (click)="callContact(c.phone)">
+      <ion-thumbnail item-start>
+        <img src={{c.icon}}>
+      </ion-thumbnail>
+      <ion-label>
+        <h3>{{c.phone}}</h3>
+        <p>{{c.name}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

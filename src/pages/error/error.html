@@ -1,0 +1,19 @@
+<ion-header no-border>
+  <ion-navbar hideBackButton transparent>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="div-content">
+    <lottie-animation-view [options]="lottieConfig" [width]="100" [height]="100">
+    </lottie-animation-view>
+
+    <h1>Ops!</h1>
+    <h6>{{message}}</h6>
+  </div>
+</ion-content>

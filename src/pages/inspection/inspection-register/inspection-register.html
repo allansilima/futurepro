@@ -1,0 +1,803 @@
+<ion-header>
+  <ion-navbar color="primary" hideBackButton>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Nova vistoria
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <ion-card color="primary">
+      <ion-card-content>
+        <h3 text-center>DADOS PESSOAIS</h3>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <div formGroupName="associated">
+          <ion-item>
+            <ion-label floating>CPF/CNPJ</ion-label>
+            <ion-input type="text" class="readonly" [readonly]="true" formControlName="cpfCnpj">
+            </ion-input>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('associated.cpfCnpj').valid">
+            {{errorMessage(form.get('associated.cpfCnpj'), 'CPF/CNPJ')}}
+          </div>
+
+          <ion-item>
+            <ion-label floating>Nome completo</ion-label>
+            <ion-input type="text" clearInput formControlName="name"> </ion-input>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('associated.name').valid">
+            {{errorMessage(form.get('associated.name'), 'Nome completo')}}
+          </div>
+
+          <ion-item>
+            <ion-label floating>RG</ion-label>
+            <ion-input type="text" clearInput formControlName="rg"> </ion-input>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('associated.rg').valid">
+            {{errorMessage(form.get('associated.rg'), 'RG')}}
+          </div>
+
+          <ion-item>
+            <ion-label floating>Órgão</ion-label>
+            <ion-select interface="popover" formControlName="emitterOrgan">
+              <ion-option *ngFor="let organ of emittersOrgans" [value]="organ.initials">
+                {{ organ.initials }}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('associated.emitterOrgan').valid">
+            {{errorMessage(form.get('associated.emitterOrgan'), 'Órgão')}}
+          </div>
+
+          <ion-item>
+            <ion-label floating>UF</ion-label>
+            <ion-select interface="popover" formControlName="emitterOrganState">
+              <ion-option *ngFor="let state of states" [value]="state.initials">{{ state.initials }}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('associated.emitterOrganState').valid">
+            {{errorMessage(form.get('associated.emitterOrganState'), 'UF')}}
+          </div>
+
+          <ion-item>
+            <ion-label floating>CNH</ion-label>
+            <ion-input type="text" clearInput formControlName="cnh"> </ion-input>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('associated.cnh').valid">
+            {{errorMessage(form.get('associated.cnh'), 'CNH')}}
+          </div>
+
+          <ion-item>
+            <ion-label floating>Data de nascimento</ion-label>
+            <ion-datetime formControlName="birthdate" displayFormat="DD/MM/YYYY" cancelText="Cancelar" doneText="Ok">
+            </ion-datetime>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('associated.birthdate').valid">
+            {{errorMessage(form.get('associated.birthdate'), 'Data de nascimento')}}
+          </div>
+
+          <ion-item>
+            <ion-label floating>Sexo</ion-label>
+            <ion-select interface="popover" formControlName="genre">
+              <ion-option value="male">Masculino</ion-option>
+              <ion-option value="female">Feminino</ion-option>
+            </ion-select>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('associated.genre').valid">
+            {{errorMessage(form.get('associated.genre'), 'Sexo')}}
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="primary">
+      <ion-card-content>
+        <h3 text-center>ENDEREÇO</h3>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <div formGroupName="associated">
+          <div formGroupName="address">
+            <ion-input-mask label="CEP" typeLabel="floating" [dropSpecialCharacters]="false" mask="99999-999"
+              (keyup)="getAddress()" formControlName="zipcode">
+            </ion-input-mask>
+            <div class="field-error-msg" *ngIf="!form.get('associated.address.zipcode').valid">
+              {{errorMessage(form.get('associated.address.zipcode'), 'CEP')}}
+            </div>
+
+            <ion-item>
+              <ion-label floating>Logradouro</ion-label>
+              <ion-input type="text" formControlName="address"> </ion-input>
+            </ion-item>
+            <div class="field-error-msg" *ngIf="!form.get('associated.address.address').valid">
+              {{errorMessage(form.get('associated.address.address'), 'Logradouro')}}
+            </div>
+
+            <ion-item>
+              <ion-label floating>Número</ion-label>
+              <ion-input type="text" clearInput maxlength="5" formControlName="number"> </ion-input>
+            </ion-item>
+            <div class="field-error-msg" *ngIf="!form.get('associated.address.number').valid">
+              {{errorMessage(form.get('associated.address.number'), 'Número')}}
+            </div>
+
+            <ion-item>
+              <ion-label floating>Complemento</ion-label>
+              <ion-input type="text" clearInput formControlName="complement"> </ion-input>
+            </ion-item>
+            <div class="field-error-msg" *ngIf="!form.get('associated.address.complement').valid">
+              {{errorMessage(form.get('associated.address.complement'), 'Complemento')}}
+            </div>
+
+            <ion-item>
+              <ion-label floating>Bairro</ion-label>
+              <ion-input type="text" formControlName="district"> </ion-input>
+            </ion-item>
+            <div class="field-error-msg" *ngIf="!form.get('associated.address.district').valid">
+              {{errorMessage(form.get('associated.address.district'), 'Bairro')}}
+            </div>
+
+            <ion-item>
+              <ion-label floating>Município</ion-label>
+              <ion-input type="text" formControlName="city"> </ion-input>
+            </ion-item>
+            <div class="field-error-msg" *ngIf="!form.get('associated.address.city').valid">
+              {{errorMessage(form.get('associated.address.city'), 'Município')}}
+            </div>
+
+            <ion-item>
+              <ion-label floating>UF</ion-label>
+              <ion-select interface="popover" formControlName="state">
+                <ion-option *ngFor="let state of states" [value]="state.initials">{{ state.initials }}
+                </ion-option>
+              </ion-select>
+
+            </ion-item>
+            <div class="field-error-msg" *ngIf="!form.get('associated.address.state').valid">
+              {{errorMessage(form.get('associated.address.state'), 'UF')}}
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="primary">
+      <ion-card-content>
+        <h3 text-center>CONTATO</h3>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <div formGroupName="associated">
+          <ion-input-mask label="Telefone fixo" typeInput="tel" typeLabel="floating" [dropSpecialCharacters]="false"
+            mask="(99) 9999-9999" formControlName="phone">
+          </ion-input-mask>
+          <div class="field-error-msg" *ngIf="!form.get('associated.phone').valid">
+            {{errorMessage(form.get('associated.phone'), 'Telefone fixo')}}
+          </div>
+
+          <ion-input-mask label="Celular 1" typeLabel="floating" [dropSpecialCharacters]="false" mask="(99) 9 9999-9999"
+            formControlName="cellphone1">
+          </ion-input-mask>
+
+          <ion-item>
+            <ion-label class="toogle">WhatsApp</ion-label>
+            <ion-toggle formControlName="cellphone1Whatsapp"></ion-toggle>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('associated.cellphone1').valid">
+            {{errorMessage(form.get('associated.cellphone1'), 'Celular 1')}}
+          </div>
+
+          <ion-input-mask label="Celular 2" typeLabel="floating" [dropSpecialCharacters]="false" mask="(99) 9 9999-9999"
+            formControlName="cellphone2">
+          </ion-input-mask>
+
+          <ion-item>
+            <ion-label class="toogle">WhatsApp</ion-label>
+            <ion-toggle formControlName="cellphone2Whatsapp"></ion-toggle>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('associated.cellphone2').valid">
+            {{errorMessage(form.get('associated.cellphone2'), 'Celular 2')}}
+          </div>
+
+
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="email" clearInput formControlName="email"> </ion-input>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('associated.email').valid">
+            {{errorMessage(form.get('associated.email'), 'Email')}}
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="primary">
+      <ion-card-content>
+        <h3 text-center>UTILIZAÇÃO DO VEÍCULO</h3>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row radio-group formControlName="utilization">
+            <ion-col col-6>
+              <ion-item no-padding>
+                <ion-radio mode="md" item-start color="primary" value="Passeio"></ion-radio>
+                <ion-label>Passeio</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item no-padding>
+                <ion-radio mode="md" item-start color="primary" value="App móvel"></ion-radio>
+                <ion-label>App móvel</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item no-padding>
+                <ion-radio mode="md" item-start color="primary" value="Táxi"></ion-radio>
+                <ion-label>Táxi</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item no-padding>
+                <ion-radio mode="md" item-start color="primary" value="Aluguel"></ion-radio>
+                <ion-label>Aluguel</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <div class="field-error-msg" *ngIf="!form.get('utilization').valid">
+          {{errorMessage(form.get('utilization'), 'Utilização do veículo')}}
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="primary">
+      <ion-card-content>
+        <h3 text-center>SELECIONE O TIPO DO VEÍCULO</h3>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-slides #typeVehicleSlides>
+          <ion-slide *ngFor="let group of typesVehiclesGroup, let i = index">
+            <ion-grid>
+              <ion-row radio-group formControlName="typeVehicle">
+                <ion-col col-3 [attr.offset-1]="typeVehicle.id > 1? true : null"
+                  [attr.offset-2]="typeVehicle.id > 3? true : null" *ngFor="let typeVehicle of group.typesVehicles">
+                  <div [class.selected-slide]="typeVehicle.selected? true : null">
+                    <ion-radio hidden value={{typeVehicle.name}}></ion-radio>
+                    <img src={{typeVehicle.src}} (click)="getBrands(typeVehicle)" />
+                    <h5 class="legend">{{typeVehicle.name}} </h5>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-slide>
+        </ion-slides>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="primary">
+      <ion-card-content>
+        <h3 text-center>DADOS DO VEÍCULO</h3>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating>Marca do veículo</ion-label>
+          <ionic-selectable #brandComponent item-content formControlName="brand" [items]="brandsVehicle"
+            itemValueField="id" itemTextField="name" [canSearch]="true" searchPlaceholder="Pesquisar"
+            [searchFailText]="'Nenhuma marca encontrada.'" [isEnabled]="form.get('typeVehicle').valid"
+            (onChange)="getModels($event)">
+          </ionic-selectable>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('brand').valid">
+          {{errorMessage(form.get('brand'), 'Marca do veículo')}}
+        </div>
+
+        <ion-item>
+          <ion-label floating>Modelo do veículo</ion-label>
+          <ionic-selectable #modelComponent item-content formControlName="model" [items]="modelsVehicle"
+            itemValueField="model_code" itemTextField="model" [canSearch]="true" searchPlaceholder="Pesquisar"
+            [searchFailText]="'Nenhum modelo encontrado.'" [isEnabled]="brandComponent.value"
+            (onChange)="getYearsFuels($event)">
+          </ionic-selectable>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('model').valid">
+          {{errorMessage(form.get('model'), 'Modelo do veículo')}}
+        </div>
+
+        <ion-item>
+          <ion-label floating>Ano/Combustível do veículo</ion-label>
+          <ionic-selectable #yearFuelComponent item-content formControlName="yearFuel" [items]="yearsFuelsVehicle"
+            itemValueField="id" itemTextField="year_fuel" [canSearch]="false"
+            [searchFailText]="'Nenhum ano/combustível encontrado.'" [isEnabled]="modelComponent.value"
+            (onChange)="getPrices($event)">
+          </ionic-selectable>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('yearFuel').valid">
+          {{errorMessage(form.get('yearFuel'), 'Ano/Combustível do veículo')}}
+        </div>
+
+        <ion-card *ngIf="prices !== null">
+          <ion-card-content>
+            <ion-slides #planSlides>
+              <ion-slide *ngFor="let plan of plans, let i = index" [class.selected-slide]="plan.selected? true : null">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-4 offset-4 (click)="setSelectedPlan(plan)">
+                      <img src={{plan.anchor}} />
+                      <h1 [class.gold]="i==0? true : null" [class.silver]="i==1? true : null"
+                        [class.bronze]="i==2? true : null">
+                        {{plan.name}}</h1>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+
+                <ion-grid>
+                  <ion-row padding-left>
+                    <ion-col col-3 [attr.offset-1]="idx > 0? true : null"
+                      *ngFor="let image of plan.images, let idx=index">
+                      <img class="logo" src={{image.src}} />
+                      <p class="legend">{{image.name}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+
+                <ion-item>
+                  <p>Proteção Contra</p>
+                  <p class="item-plan">{{plan.coverage}}</p>
+                </ion-item>
+
+                <ion-item>
+                  <p>Assistência</p>
+                  <p class="item-plan">{{plan.assistance}}</p>
+                </ion-item>
+
+                <ion-item>
+                  <p>Pacote de Benefícios</p>
+                  <p class="item-plan">{{plan.benefits}}</p>
+                </ion-item>
+
+                <div padding-top>
+                  <strong>ENTRADA</strong>
+                  <div class="div-input">
+                    {{ plan.price | currency:'BRL':'symbol':'1.2-2':'pt'}}
+                  </div>
+                </div>
+                <br>
+                <div>
+                  <strong>MENSALIDADE</strong>
+                  <div [class.div-gold]="i==0? true : null" [class.div-silver]="i==1? true : null"
+                    [class.div-bronze]="i==2? true : null">
+                    {{ plan.price | currency:'BRL':'symbol':'1.2-2':'pt'}}
+                  </div>
+                </div>
+                <br>
+                <div>
+                  <strong>COTA DE PARTICIPAÇÃO</strong>
+                  <div class="div-input">
+                    {{ plan.feeValue | currency:'BRL':'symbol':'1.2-2':'pt'}}
+                  </div>
+                </div>
+                <!--
+                <div class="swiper-button-next" (click)="slideNext('planSlides')"></div>
+                <div class="swiper-button-prev" (click)="slidePrev('planSlides')"></div>
+                -->
+              </ion-slide>
+            </ion-slides>
+          </ion-card-content>
+        </ion-card>
+        <div class="field-error-msg" *ngIf="!form.get('plan').valid">
+          {{errorMessage(form.get('plan'), 'Pacote de benefícios')}}
+        </div>
+
+        <div formGroupName="contract">
+          <ion-item>
+            <ion-label floating>Dia do vencimento</ion-label>
+            <ion-select interface="popover" formControlName="dueDay">
+              <ion-option value="10">10</ion-option>
+              <ion-option value="25">25</ion-option>
+            </ion-select>
+          </ion-item>
+          <div class="field-error-msg" *ngIf="!form.get('contract.dueDay').valid">
+            {{errorMessage(form.get('contract.dueDay'), 'Dia do vencimento')}}
+          </div>
+        </div>
+
+        <ion-input-mask label="Placa" typeLabel="floating" [dropSpecialCharacters]="false" mask="SSS-0A00" #plate
+          (keyup)="formatPlate(plate.value)" formControlName="plate">
+        </ion-input-mask>
+        <div class="field-error-msg" *ngIf="!form.get('plate').valid">
+          {{errorMessage(form.get('plate'), 'Placa')}}
+        </div>
+
+        <ion-item>
+          <ion-label floating>Chassis</ion-label>
+          <ion-input type="text" clearInput formControlName="chassis"> </ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('chassis').valid">
+          {{errorMessage(form.get('chassis'), 'Chassis')}}
+        </div>
+
+        <ion-item>
+          <ion-label floating>Renavam</ion-label>
+          <ion-input type="text" clearInput formControlName="renavam"> </ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('renavam').valid">
+          {{errorMessage(form.get('renavam'), 'Renavam')}}
+        </div>
+
+        <ion-item>
+          <ion-label floating>Cor</ion-label>
+          <ion-input type="text" clearInput formControlName="color"> </ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('color').valid">
+          {{errorMessage(form.get('color'), 'Cor')}}
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="primary">
+      <ion-card-content>
+        <h3 text-center>FOTOS</h3>
+      </ion-card-content>
+    </ion-card>
+
+    <h5 text-center>CNH / COMPROVANTE DE ENDEREÇO / DUT</h5>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 [attr.offset-3]="i==2? true : null" *ngFor="let photo of documentsPhotos, let i = index">
+          <ion-card (click)="getPicture(photo)">
+            <ion-card-content>
+              <img class="photo-frame" src="{{photo.src}}" />
+              <div text-center>
+                <h5>{{ photo.description }}</h5>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div id="car" *ngIf="form.get('typeVehicle').value == 'Carro e Pickups'">
+      <h5 text-center>FRONTAL</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 [attr.offset-3]="i==6? true : null" *ngFor="let photo of carFrontPhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>LATERAL</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let photo of carSidePhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>TRASEIRA</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let photo of carRearPhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>PNEU</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 [attr.offset-3]="i==4? true : null" *ngFor="let photo of carTirePhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>INTERIOR</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 [attr.offset-3]="i==2? true : null" *ngFor="let photo of carInternalPhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div id="moto" *ngIf="form.get('typeVehicle').value == 'Moto'">
+      <h5 text-center>FRONTAL</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 offset-3 *ngFor="let photo of motorcycleFrontPhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>LATERAL</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let photo of motorcycleSidePhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>TRASEIRA</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let photo of motorcycleRearPhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>PNEU</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 offset-3 *ngFor="let photo of motorcycleTirePhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>PAINEL / CHASSIS</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let photo of motorcycleInternalPhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div id="pickups" *ngIf="form.get('typeVehicle').value == 'Pickups'">
+      <h5 text-center>FRONTAL</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 [attr.offset-3]="i==6? true : null" *ngFor="let photo of pickupFrontPhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>LATERAL</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let photo of pickupSidePhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>TRASEIRA</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let photo of pickupRearPhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>PNEU</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 [attr.offset-3]="i==4? true : null" *ngFor="let photo of pickupTirePhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h5 text-center>INTERIOR</h5>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 [attr.offset-3]="i==2? true : null" *ngFor="let photo of pickupInternalPhotos, let i = index">
+            <ion-card (click)="getPicture(photo)">
+              <ion-card-content>
+                <img src="{{photo.src}}" />
+                <div text-center>
+                  <h5>{{ photo.description }}</h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <!--
+    <ion-card color="primary">
+      <ion-card-content>
+        <h3 text-center>FILMAGEM DO VEÍCULO</h3>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="card-video">
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 offset-3>
+              <img src="../../assets/imgs/movie_end.svg" *ngIf="mediaFiles.length == 0" (click)="getVideoVehicle()" />
+              <img src="../../assets/imgs/movie_beginning.svg" *ngIf="mediaFiles.length > 0" (click)="playVideo()" />
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  -->
+
+    <ion-card color="primary">
+      <ion-card-content>
+        <h3 text-center>CONTRATO</h3>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-item padding (click)="downloadContract()">
+          <ion-thumbnail style="size: 40%" item-start>
+            <img src="../../assets/imgs/pdf.svg" />
+          </ion-thumbnail>
+          <a href="#"> Baixe aqui o contrato </a>
+        </ion-item>
+
+        <ion-item>
+          <ion-checkbox mode="md" item-start color="primary" formControlName="readAndAgree"></ion-checkbox>
+          <ion-label>Li e concordo com os termos do contrato</ion-label>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('readAndAgree').valid">
+          {{errorMessage(form.get('readAndAgree'), 'Li e concordo com os termos do contrato')}}
+        </div>
+
+        <ion-item>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6 offset-3 *ngFor="let photo of signaturePhoto">
+                <ion-card (click)="getPicture(photo)">
+                  <ion-card-content>
+                    <img src="{{photo.src}}" />
+                    <div text-center>
+                      <h5>{{ photo.description }}</h5>
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+
+    <div class="field-error-msg">
+      {{ formulario}}
+    </div>
+
+    <div padding class="div-button-submit">
+      <button ion-button type="submit" color="primary" block (click)="verifyData()">Enviar</button>
+    </div>
+
+  </form>
+</ion-content>

@@ -1,0 +1,96 @@
+page-inspection-register {
+  .slide {
+    text-align: center;
+  }
+
+  .div-input {
+    width: 100%;
+    border: 1px solid #204a8a;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    justify-content: center;
+    border-radius: 7px;
+    padding: 5px 50px 5px 50px;
+  }
+
+  .selected-slide {
+    background-image: url("../../assets/imgs/checkmark.svg");
+    background-repeat: no-repeat;
+    background-position: top 7px right 5px;
+    background-color: #f6b931;
+    border-radius: 10px;
+    padding: 15px 15px 10px 15px;
+  }
+
+  strong {
+    color: #204a8a;
+  }
+
+  .anchor {
+    width: 80%;
+    height: 80%;
+  }
+
+  .swiper-button {
+    color: #204a8a !important;
+    size: 20px;
+  }
+
+  .gold {
+    color: #d49a29;
+    font-weight: bold;
+  }
+
+  .silver {
+    color: #9da4b8;
+    font-weight: bold;
+  }
+
+  .bronze {
+    color: #984410;
+    font-weight: bold;
+  }
+
+  .div-gold {
+    width: 100%;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    justify-content: center;
+    border-radius: 7px;
+    padding: 5px 50px 5px 50px;
+    background-color: #d49a29;
+  }
+
+  .div-silver {
+    width: 100%;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    justify-content: center;
+    border-radius: 7px;
+    padding: 5px 50px 5px 50px;
+    background-color: #9da4b8;
+  }
+
+  .div-bronze {
+    width: 100%;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    justify-content: center;
+    border-radius: 7px;
+    padding: 5px 50px 5px 50px;
+    background-color: #984410;
+  }
+
+  .item-plan {
+    font-size: 11px;
+    color: #999999;
+    text-align: left;
+    margin: 0px;
+    white-space: pre;
+    word-wrap: break-word;
+  }
+}

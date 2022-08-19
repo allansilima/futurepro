@@ -1,0 +1,7 @@
+{
+  "name": "futurepro",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

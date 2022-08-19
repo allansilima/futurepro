@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar color="primary" hideBackButton>
+      <ion-buttons start>
+        <button ion-button icon-only (click)="goBack()">
+          <ion-icon name="arrow-round-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Download</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content class="option-list">
+  <ion-list>
+    <ion-item color="primary" class="option-list" *ngFor="let file of files" (click)= "download(file)">
+      <ion-thumbnail item-start>
+        <img src={{file.icon}}>
+      </ion-thumbnail>
+      <ion-label>{{file.title}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

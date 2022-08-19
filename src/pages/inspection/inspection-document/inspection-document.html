@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="primary" hideBackButton>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Nova vistoria
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="div-content">
+      <h2>Vamos lá!</h2>
+      <h6>Para iniciar sua vistoria, informe o CPF/CNPJ do Associado</h6>
+    </div>
+    <ion-input-mask label="CPF/CNPJ" typeInput="tel" typeLabel="floating" [dropSpecialCharacters]="false" [mask]="maskCpfCnpj" #cpfCnpj
+      autocomplete="off" (keyup)="setMaskCpfCnpj(cpfCnpj.value)" formControlName="cpfCnpj">
+    </ion-input-mask>
+    <div class="field-error-msg" *ngIf="!form.get('cpfCnpj').valid">
+      {{errorMessage(form.get('cpfCnpj'), 'CPF/CNPJ')}}
+    </div>
+
+    <div padding class="div-button-submit">
+      <button ion-button type="submit" color="primary" block [disabled]="!form.valid"
+        (click)="findByCpfCnpj()">Continuar</button>
+    </div>
+
+  </form>
+</ion-content>

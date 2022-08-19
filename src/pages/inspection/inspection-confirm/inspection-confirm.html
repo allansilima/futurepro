@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar color="primary" hideBackButton>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Confirmação da vistoria
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <h1 text-center><strong>RESUMO DA VISTORIA</strong></h1>
+      <ion-item padding-top>
+        <ion-label class="text"> <strong>CPF/CNPJ: </strong> {{ inspection.associated.cpfCnpj }} </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="text"> <strong> Nome completo: </strong> {{ inspection.associated.name }} </ion-label>
+      </ion-item>
+
+      <ion-item>
+          <ion-label class="text"> 
+          <strong> Veículo: </strong> {{ inspection.brand.attributes.name }} / {{ inspection.model.attributes.model }}
+          </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="text"> <strong> Detalhes do Veículo: </strong> {{ inspection.yearFuel.attributes.model_year + '-' + inspection.yearFuel.attributes.fuel_type }} / {{ inspection.plate }} / {{ inspection.chassis }} / {{ inspection.renavam }} / {{ inspection.color }} </ion-label>
+      </ion-item>
+
+      <ion-item padding-top>
+        <ion-label> <strong> Plano: </strong> {{ inspection.plan }}
+        </ion-label>
+      </ion-item>
+
+      <ion-item padding-top>
+        <ion-label> <strong> Valor entrada: </strong> {{ inspection.inputValue | currency:'BRL':'symbol':'1.2-2':'pt' }}
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label> <strong> Mensalidade: </strong> {{ inspection.monthlyValue | currency:'BRL':'symbol':'1.2-2':'pt' }}
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label> <strong> Dia do vencimento: </strong> {{ inspection.contract.dueDay }}
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label> <strong> Cota de participação: </strong>
+          {{ inspection.feeValue | currency:'BRL':'symbol':'1.2-2':'pt' }}
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <div padding class="div-button-submit">
+    <button ion-button type="submit" color="secondary" block (click)="confirm()">
+      Confirmar</button>
+  </div>
+</ion-content>

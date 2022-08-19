@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Passeio",
+    "selected": true,
+    "special": false
+  },
+  {
+    "id": 2,
+    "name": "App móvel",
+    "selected": false,
+    "special": true
+  },
+  {
+    "id": 3,
+    "name": "Táxi",
+    "selected": false,
+    "special": true
+  },
+  {
+    "id": 4,
+    "name": "Aluguel",
+    "selected": false,
+    "special": true
+  }
+]

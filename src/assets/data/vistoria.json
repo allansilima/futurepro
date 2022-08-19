@@ -1,0 +1,206 @@
+{
+  "vistoria": {
+    "id_backend": 100,
+    "id_fipe_preco": 713138,
+    "id_associado": 69,
+    "id_sub_tipo_veiculo": 36,
+    "id_veiculo_plano": 451,
+    "status": "APROVADO",
+    "placa": "KWV2937",
+    "chassis": "9BWDA05U7AT056131",
+    "renavam": "00155182366",
+    "cor": "PRETA",
+    "zero_km": null,
+    "valor_adesao": null,
+    "valor_mensalidade": null,
+    "id_licenca": 3,
+    "created_at": "2019-01-16 22:39:22",
+    "updated_at": "2019-01-21 17:26:10",
+    "mensagem": "",
+    "associado": {
+      "id_backend": 69,
+      "fantasia": "JORDAO DA SILVA BRAGA",
+      "rg": "209033190",
+      "orgao_expedidor": "FGTS",
+      "orgao_expedidor_uf": "RJ",
+      "cnh": 4491556127,
+      "cnh_categoria": null,
+      "data_nascimento": "1984-11-28",
+      "telefone": "2226616378",
+      "celular1": "24992226230",
+      "celular1_whatsapp": true,
+      "celular2": "",
+      "celular2_whatsapp": false,
+      "email": "Jordaotl.Cas@hotmail.com ",
+      "receber_noticia": true,
+      "receber_ofertas": true,
+      "created_at": "2000-01-01 00:00:00",
+      "updated_at": "2019-01-19 16:42:26",
+      "pessoa": {
+        "id_backend": 3816,
+        "nome": "JORDAODASILVABRAGA",
+        "tipo_pessoa": "PF",
+        "cpf_cnpj": "11175104760",
+        "cep": "2897000",
+        "numero": "Quadra 21 ",
+        "bairro": "Itatiquara",
+        "cidade_id": 1606,
+        "estado_id": 19,
+        "cidade": {
+          "id": 1606,
+          "estado": {
+            "id": 19,
+            "uf": "RJ",
+            "nome": "Rio de Janeiro"
+          },
+          "nome": "Araruama"
+        },
+        "endereco": "Avenida natal ",
+        "complemento": "Casa segunda a direita penultima casa L D "
+      },
+      "genero": "M"
+    },
+    "veiculo_subtipo": {
+      "id": 36,
+      "descricao": "Veiculos leves tabela normal 4%"
+    },
+    "veiculo_tipo": {
+      "id": 1,
+      "nome": "Carros",
+      "codigo": "1"
+    },
+    "preco_fipe": {
+      "id": 713138,
+      "fipe_modelo": {
+        "id": 33167,
+        "fipe_marca": {
+          "id": 788,
+          "fipe_tipo": {
+            "id": 1,
+            "codigo": "1",
+            "nome": "Carros"
+          },
+          "codigo": 59,
+          "nome": "VW - VolksWagen",
+          "data_remocao": null
+        },
+        "codigo": 4752,
+        "data_remocao": null
+      },
+      "codigo": "005283-3",
+      "combustivel": "Gasolina",
+      "ano_modelo": 2009,
+      "preco": "21413.0",
+      "data_remocao": "2019-02-01"
+    },
+    "marca": {
+      "id": 788,
+      "fipe_tipo": {
+        "id": 1,
+        "codigo": "1",
+        "nome": "Carros"
+      },
+      "codigo": 59,
+      "nome": "VW - VolksWagen",
+      "data_remocao": null
+    },
+    "modelo": {
+      "id": 33167,
+      "fipe_marca": {
+        "id": 788,
+        "fipe_tipo": {
+          "id": 1,
+          "codigo": "1",
+          "nome": "Carros"
+        },
+        "codigo": 59,
+        "nome": "VW - VolksWagen",
+        "data_remocao": null
+      },
+      "codigo": 4752,
+      "data_remocao": null
+    },
+    "veiculo_plano": {
+      "id": 451,
+      "id_subtipo_veiculo": 36,
+      "veiculo_subtipo": {
+        "id": 36,
+        "descricao": "Veiculos leves tabela normal 4%"
+      },
+      "atributos": [
+        {
+          "id": 1998,
+          "nome": "Roubo",
+          "valor": 0.0
+        },
+        {
+          "id": 1999,
+          "nome": "Furto",
+          "valor": 0.0
+        },
+        {
+          "id": 2000,
+          "nome": "ColisÃ£o",
+          "valor": 0.0
+        },
+        {
+          "id": 2001,
+          "nome": "Terceiro 50mil danos materias",
+          "valor": 0.0
+        },
+        {
+          "id": 2002,
+          "nome": "Troca de vidros e perifÃ©ricos 80%",
+          "valor": 0.0
+        },
+        {
+          "id": 2003,
+          "nome": "Carro Reserva 7 dias",
+          "valor": 0.0
+        },
+        {
+          "id": 2004,
+          "nome": "Desconto na Rede",
+          "valor": 0.0
+        },
+        {
+          "id": 2005,
+          "nome": "AssistÃªncia 24hs 800km (400km ida 400km volta)",
+          "valor": 0.0
+        },
+        {
+          "id": 2006,
+          "nome": "1 guincho ilimitado por colisÃ£o",
+          "valor": 0.0
+        }
+      ],
+      "id_cota_rateio": 5568,
+      "nome": "Plano Prata",
+      "cota_participacao": 4.0,
+      "cota_rateio": 30.0,
+      "valor": 127.4,
+      "valor_basico": 127.4,
+      "valor_entrada": 350.0,
+      "qtd_cota_rateio": 1.5,
+      "valor_fipe_minimo": 20001.0,
+      "valor_fipe_maximo": 25000.0,
+      "id_veiculo_subtipo": 36,
+      "descricao": "Roubo / Furto / ColisÃ£o / Terceiro 50mil danos materias / Troca de vidros e perifÃ©ricos 80% / Carro Reserva 7 dias / Desconto na Rede / AssistÃªncia 24hs 800km (400km ida 400km volta) / 1 guincho ilimitado por colisÃ£o"
+    },
+    "atributos": [
+      
+    ]
+  },
+  "vistoriador": {
+    "name": "jordaodasilvabraga ",
+    "login": "jordaodasilvabraga",
+    "email": "jordaotl.cas@hotmail.com"
+  },
+  "contrato": {
+    "id": 1252,
+    "dia_vencimento": 25,
+    "data_inclusao": "2019-01-21",
+    "valor_total": "127.4",
+    "situacao": "ATIVO"
+  }
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "initials": "----------",
+    "name": ""
+  },
+  {
+    "id": 2,
+    "initials": "SSP",
+    "name": "Secretaria de Segurança Pública"
+  },
+  {
+    "id": 3,
+    "initials": "PM",
+    "name": "Polícia Militar"
+  },
+  {
+    "id": 4,
+    "initials": "PC",
+    "name": "Polícia Civil"
+  },
+  {
+    "id": 5,
+    "initials": "CNH",
+    "name": "Carteira Nacional de Habilitação"
+  },
+  {
+    "id": 6,
+    "initials": "DIC",
+    "name": "Diretoria de Identificação Civil"
+  },
+  {
+    "id": 7,
+    "initials": "CTPS",
+    "name": "Carteira de Trabaho e Previdência Social"
+  },
+  {
+    "id": 8,
+    "initials": "FGTS",
+    "name": "Fundo de Garantia do Tempo de Serviço"
+  },
+  {
+    "id": 9,
+    "initials": "IFP",
+    "name": "Instituto Félix Pacheco"
+  },
+  {
+    "id": 10,
+    "initials": "IPF",
+    "name": "Instituto Pereira Faustino"
+  },
+  {
+    "id": 11,
+    "initials": "IML",
+    "name": "IML - Instituto Médico-Legal"
+  },
+  {
+    "id": 12,
+    "initials": "MTE",
+    "name": "Ministério do Trabalho e Emprego"
+  },
+  {
+    "id": 13,
+    "initials": "MMA",
+    "name": "Ministério da Marinha"
+  },
+  {
+    "id": 14,
+    "initials": "MAE",
+    "name": "Ministério da Aeronáutica"
+  },
+  {
+    "id": 15,
+    "initials": "MEX",
+    "name": "Ministério do Exército"
+  },
+  {
+    "id": 16,
+    "initials": "POF",
+    "name": "Polícia Federal"
+  },
+  {
+    "id": 17,
+    "initials": "POM",
+    "name": "Polícia Militar"
+  },
+  {
+    "id": 18,
+    "initials": "SES",
+    "name": "Carteira de Estrangeiro"
+  },
+  {
+    "id": 19,
+    "initials": "SJS",
+    "name": "Secretaria da Justiça e Segurança"
+  },
+  {
+    "id": 20,
+    "initials": "SJTS",
+    "name": "Secretaria da Justiça do Trabalho e Segurança"
+  },
+  { 
+    "id": 21,
+    "initials": "DPF",
+    "name": "Departamento de Polícia Federal"
+  },
+  {
+    "id": 22,
+    "initials": "ZZZ",
+    "name": "Outros (inclusive exterior)"
+  }
+]

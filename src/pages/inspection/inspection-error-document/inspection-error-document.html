@@ -1,0 +1,23 @@
+<ion-header no-border>
+  <ion-navbar hideBackButton transparent>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="div-content">
+    <lottie-animation-view [options]="lottieConfig" [width]="150" [height]="150">
+    </lottie-animation-view>
+
+    <h1>Ops!</h1>
+    <h6>{{message}}</h6>
+  </div>
+
+  <div padding class="div-button-submit">
+    <button ion-button type="submit" color="primary" block (click)="createAccount()">Cadastrar</button>
+  </div>
+</ion-content>

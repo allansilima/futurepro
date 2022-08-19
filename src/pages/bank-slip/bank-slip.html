@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="primary" hideBackButton>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      2ª via de boleto
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <div formGroupName="form">
+
+        <ion-input-mask label="CPF/CNPJ" typeInput="tel" typeLabel="floating" formControlName="cpfCnpj" [mask]="maskCpfCnpj" #cpfCnpj
+          (keyup)="setMaskCpfCnpj(cpfCnpj.value)" (change)="findByCpfCnpj()">
+        </ion-input-mask>
+
+        <div class="field-error-msg" *ngIf="!form.get('cpfCnpj').valid">
+          {{errorMessage(form.get('cpfCnpj'), 'CPF/CNPJ')}}
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

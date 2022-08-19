@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar color="primary" hideBackButton>
+      <ion-buttons start>
+        <button ion-button icon-only (click)="goBack()">
+          <ion-icon name="arrow-round-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>
+        Nova vistoria
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+<ion-content padding>
+    <div>
+        <ion-card color="primary">
+          <ion-card-content>
+            <h3 text-center>A FUTURE MOTORS</h3>
+          </ion-card-content>
+        </ion-card>
+  
+        <ion-card class="card-video">
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col >
+                  <img src="../../assets/imgs/movie_beginning.svg" (click)="playVideoTutorial()" />
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div padding class="div-button-submit">
+          <button ion-button type="submit" color="primary" outline block
+            (click)="nextPage()">Pular</button>
+        </div>
+    
+</ion-content>

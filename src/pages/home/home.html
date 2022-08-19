@@ -1,0 +1,43 @@
+<ion-header no-border>
+  <ion-navbar hideBackButton transparent>
+    <ion-buttons (click)="goToProfile()" *ngIf="isAuthenticated()">
+      <button ion-button mode="ios">
+        <ion-icon start color="primary" name="person" icon-only ></ion-icon>
+        <ion-label color="primary" padding-left> {{ userAuthenticated.name }} </ion-label>
+      </button>
+    </ion-buttons>
+    <ion-buttons end (click)="signOut()" *ngIf="isAuthenticated()">
+      <button ion-button>
+        <ion-icon end color="primary" name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <div class="logo">
+    <img src="assets/imgs/FuturePRO_BETA.svg" />
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-list class="animated fadeInDownBig">
+    <ion-item color="primary" class="menu" (click)="openPage(p.page, p.authenticate)" *ngFor="let p of pages">
+      <ion-thumbnail item-start>
+        <img src={{p.icon}}>
+      </ion-thumbnail>
+      <ion-label> {{p.title}} </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+<ion-list>
+  <ion-item color="primary" *ngFor="let u of users">
+    <ion-label> {{u.login}} </ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-footer text-center>
+  <ion-toolbar color="primary-shade">
+    <a target="_blank" href="http://futuremotors.com.br">www.futuremotors.com.br</a>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="primary" hideBackButton>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      Minhas vistorias
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="option-list">
+  <ion-searchbar placeholder="Pesquisar" *ngIf="search"> (ionInput)="inspectionSearch($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item color="primary" class="option-list">
+      <ion-grid>
+        <ion-row style="height: 60px; margin-bottom: 1px; border-bottom-color: darkgray;" *ngFor="let item of inspectionPage, let i = index">
+          <ion-col col-2 padding>
+            <div style="width: 25px; height: 25px;">
+              <img *ngIf="item.attributes.status == 'analysis'" src="assets/imgs/inspection-status/inspection_on_analysis.svg">
+              <img *ngIf="item.attributes.status == 'pending'" src="assets/imgs/inspection-status/inspection_pending.svg">
+              <img *ngIf="item.attributes.status == 'approved'" src="assets/imgs/inspection-status/inspection_approved.svg">
+              <img *ngIf="item.attributes.status == 'rejected'" src="assets/imgs/inspection-status/inspection_rejected.svg">
+            </div>
+          </ion-col>
+          <ion-col col-2 padding>
+            <div style="width: 25px; height: 25px;">
+              <img *ngIf="item.attributes.status == 'analysis'" src="assets/imgs/inspection-status/analysis.svg">
+              <img *ngIf="item.attributes.status == 'pending'" src="assets/imgs/inspection-status/pending.svg">
+              <img *ngIf="item.attributes.status == 'approved'" src="assets/imgs/inspection-status/approved.svg">
+              <img *ngIf="item.attributes.status == 'rejected'" src="assets/imgs/inspection-status/rejected.svg">
+            </div>
+          </ion-col>
+          <ion-col col-2 padding>
+            <div style="width: 25px; height: 25px;">
+              <img *ngIf="item.attributes.status == 'analysis'" src="assets/imgs/inspection-status/view_analysis.svg">
+              <img *ngIf="item.attributes.status == 'pending'" src="assets/imgs/inspection-status/view_pending.svg">
+              <img *ngIf="item.attributes.status == 'approved'" src="assets/imgs/inspection-status/view_approved.svg">
+              <img *ngIf="item.attributes.status == 'rejected'" src="assets/imgs/inspection-status/view_rejected.svg">
+            </div>
+          </ion-col>
+
+          <ion-col col-6 text-center>
+            <ion-grid>
+              <ion-row>
+                <label>
+                  <strong> {{ item.attributes.status | uppercase }} </strong>
+                </label>
+              </ion-row>
+              <ion-row>
+                <label>
+                  <strong> {{ item.attributes.plate }} </strong>
+                </label>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="viewedRegisterNumber < registerNumber">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar color="primary" hideBackButton>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Minha conta
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-card>
+      <ion-card-content>
+        <ion-avatar class="avatar-profile">
+          <img src="assets/imgs/blank-profile.svg">
+        </ion-avatar>
+
+        <ion-item padding-bottom>
+          <ion-label floating>Nome completo</ion-label>
+          <ion-input type="text" [readonly]="true" formControlName="name"></ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('name').valid">
+          {{errorMessage(form.get('name'), 'Nome completo')}}
+        </div>
+
+        <ion-item padding-bottom>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" [readonly]="true" formControlName="email"></ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('email').valid">
+          {{errorMessage(form.get('email'), 'Email')}}
+        </div>
+
+        <ion-item padding-bottom>
+          <ion-label floating>CPF</ion-label>
+          <ion-input type="text" [readonly]="true" formControlName="cpf"></ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('cpf').valid">
+          {{errorMessage(form.get('cpf'), 'CPF')}}
+        </div>
+
+        <ion-item padding-bottom>
+          <ion-label floating>Login</ion-label>
+          <ion-input type="text" [readonly]="true" formControlName="login"></ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('login').valid">
+          {{errorMessage(form.get('login'), 'Login')}}
+        </div>
+
+        <ion-item padding-bottom>
+          <ion-label floating>Status</ion-label>
+          <ion-input type="text" [readonly]="true" formControlName="status"></ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('cpf').valid">
+          {{errorMessage(form.get('status'), 'Status')}}
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

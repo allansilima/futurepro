@@ -1,0 +1,43 @@
+<ion-header no-border>
+  <ion-navbar hideBackButton transparent>
+    <ion-buttons start>
+      <button ion-button icon-only color="primary" (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <div class="logo">
+    <img src="assets/imgs/FuturePRO_BETA.svg" />
+  </div>
+</ion-header>
+
+<ion-content scroll="false">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating>Email ou usuário</ion-label>
+          <ion-input type="text" clearInput autocapitalize="none" maxlength="50"  #login (keyup)="onKeyup(login.value)" formControlName="login"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Senha</ion-label>
+          <ion-input type="password" clearInput maxlength="16" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-item padding-top padding-bottom>
+          <ion-label class="toogle">Lembrar-me</ion-label>
+          <ion-toggle formControlName="remember"></ion-toggle>
+        </ion-item>
+
+        <div padding class="div-button-submit">
+          <button ion-button type="submit" color="primary" block [disabled]="!form.valid">Entrar</button>
+        </div>
+        <div text-center style="size: 6px !important;">
+          <a href="#" (click)="goToRedefinePassword()">Esqueceu sua senha?</a>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

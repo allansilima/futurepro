@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar color="primary" hideBackButton>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Nova conta
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating>Patrocinador</ion-label>
+          <ion-input type="text" class="readonly" [readonly]="true" formControlName="sponsor_username">
+          </ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('sponsor_username').valid">
+          {{errorMessage(form.get('sponsor_username'), 'Patrocinador')}}
+        </div>
+
+        <ion-item>
+          <ion-label floating>Nome usuário</ion-label>
+          <ion-input clearInput type="text" autocapitalize="none" maxlength="255" formControlName="username">
+          </ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('username').valid">
+          {{errorMessage(form.get('username'), 'Nome usuário')}}
+        </div>
+
+        <ion-input-mask label="CPF/CNPJ" typeLabel="floating" [dropSpecialCharacters]="false" [mask]="maskCpfCnpj"
+          #cpfCnpj (keyup)="setMaskCpfCnpj(cpfCnpj.value)" (change)="findByCpfCnpj()" formControlName="cpf_cnpj">
+        </ion-input-mask>
+        <div class="field-error-msg" *ngIf="!form.get('cpf_cnpj').valid">
+          {{errorMessage(form.get('cpf_cnpj'), 'CPF/CNPJ')}}
+        </div>
+
+        <ion-item>
+          <ion-label floating>Nome completo</ion-label>
+          <ion-input clearInput type="text" maxlength="255" formControlName="name"></ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('name').valid">
+          {{errorMessage(form.get('name'), 'Nome completo')}}
+        </div>
+
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input clearInput type="email" maxlength="255" formControlName="email"></ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('email').valid">
+          {{errorMessage(form.get('email'), 'Email')}}
+        </div>
+
+        <ion-item>
+          <ion-label floating>Senha</ion-label>
+          <ion-input clearInput type="password" maxlength="16" formControlName="password"></ion-input>
+        </ion-item>
+        <div class="field-error-msg" *ngIf="!form.get('password').valid">
+          {{errorMessage(form.get('password'), 'Senha')}}
+        </div>
+
+        <div padding class="div-button-submit">
+          <button ion-button type="submit" color="primary" block>Salvar</button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

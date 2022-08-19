@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "Carro",
+    "code": "1"
+  },
+  {
+    "id": 2,
+    "name": "Moto",
+    "code": "2"
+  },
+  {
+    "id": 3,
+    "name": "Pickup",
+    "code": "3"
+  },
+  {
+    "id": 4,
+    "name": "Van",
+    "code": "3"
+
+  },
+  {
+    "id": 5,
+    "name": "Caminhão",
+    "code": "3"
+  }
+]
